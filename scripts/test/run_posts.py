@@ -1,6 +1,6 @@
 import yaml
 
-from korean_blog_extractor import PostHandler, BlogChartHandler
+from korean_blog_extractor import BlogChartHandler, PostHandler
 
 
 def main():

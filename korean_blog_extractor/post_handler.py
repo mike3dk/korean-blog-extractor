@@ -3,27 +3,29 @@ from urllib.parse import urlparse
 
 import feedparser
 
-from korean_blog_extractor.platforms.naver import naver_func_blog_info, naver_func_tags_images
-from korean_blog_extractor.platforms.tistory import tistory_func_blog_info, tistory_func_tags_images
-from korean_blog_extractor.platforms.egloos import egloos_func_blog_info, egloos_func_tags_images
+from korean_blog_extractor.platforms.naver import (
+    naver_func_blog_info,
+    naver_func_tags_images,
+)
+from korean_blog_extractor.platforms.tistory import (
+    tistory_func_blog_info,
+    tistory_func_tags_images,
+)
 
 
 class Platform(Enum):
     NAVER = 1
     TISTORY = 2  # daum is now using Tistory
-    EGLOOS = 3
 
 
 func_dict_blog_info = {
     Platform.NAVER: naver_func_blog_info,
     Platform.TISTORY: tistory_func_blog_info,
-    Platform.EGLOOS: egloos_func_blog_info,
 }
 
 func_dict_tags_images = {
     Platform.NAVER: naver_func_tags_images,
     Platform.TISTORY: tistory_func_tags_images,
-    Platform.EGLOOS: egloos_func_tags_images,
 }
 
 
@@ -63,11 +65,6 @@ class PostHandler:
         if "tistory" in parsed.netloc:
             self._platform = Platform.TISTORY
             return f"{parsed.scheme}://{parsed.netloc}/rss"
-
-        if "egloos" in parsed.netloc:
-            name = parsed.netloc.split(".")[0]
-            self._platform = Platform.EGLOOS
-            return f"http://rss.egloos.com/blog/{name}"
 
         if "blog.me" in parsed.netloc:
             return f"http://rss.blog.naver.com/{name}.xml"
