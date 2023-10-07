@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 
 import feedparser
 
-from posui.platforms.common import fetch_soup
+from korean_blog_extractor.platforms.common import fetch_soup
 
 
 def tistory_func_blog_info(rss_url):

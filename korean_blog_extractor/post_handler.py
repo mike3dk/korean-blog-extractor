@@ -3,9 +3,9 @@ from urllib.parse import urlparse
 
 import feedparser
 
-from posui.platforms.naver import naver_func_blog_info, naver_func_tags_images
-from posui.platforms.tistory import tistory_func_blog_info, tistory_func_tags_images
-from posui.platforms.egloos import egloos_func_blog_info, egloos_func_tags_images
+from korean_blog_extractor.platforms.naver import naver_func_blog_info, naver_func_tags_images
+from korean_blog_extractor.platforms.tistory import tistory_func_blog_info, tistory_func_tags_images
+from korean_blog_extractor.platforms.egloos import egloos_func_blog_info, egloos_func_tags_images
 
 
 class Platform(Enum):
