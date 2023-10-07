@@ -1,4 +1,5 @@
 import yaml
+import traceback
 
 from korean_blog_extractor import BlogChartHandler, PostHandler
 
@@ -25,8 +26,9 @@ def main():
             assert images == expected["images"]
 
             print(">>> all good!!!")
-        except AssertionError as err:
-            print(err)
+        except Exception as err:
+            print(f"An exception occurred: {err}")
+            traceback.print_exc()
 
 
 if __name__ == "__main__":

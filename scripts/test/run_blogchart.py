@@ -1,5 +1,5 @@
 import yaml
-
+import traceback
 from korean_blog_extractor import BlogChartHandler
 
 
@@ -21,10 +21,10 @@ def main():
 
             for row in actual:
                 print(row)
-
-            print(">>> all good!!!")
-        except AssertionError as err:
-            print(err)
+            assert expected["ranks"] == actual
+        except Exception as err:
+            print(f"An exception occurred: {err}")
+            traceback.print_exc()
 
 
 if __name__ == "__main__":

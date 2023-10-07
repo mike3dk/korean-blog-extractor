@@ -17,30 +17,26 @@ class BlogChartHandler:
         return self._ranks
 
     @property
+    def all_themes(self):
+        return self._all_themes
+
+    @property
     def all_theme_names(self):
         return self._all_themes.keys()
 
     def __generate_themes_list(self):
         all_themes = {}
+        URL = "https://www.blogchart.co.kr/chart/theme_list"
 
-        # URL = "https://www.blogchart.co.kr/chart/theme"
-        # soup = fetch_soup(URL)
-        # found = soup.select("ul.theme_list li a")
-        # for row in found:
-        #     theme = row.select_one("p").text
-        #     url = row.get("href")
-        #     all_themes[theme] = url
-
-        URL2 = "https://www.blogchart.co.kr/chart/theme_list"
-
-        soup = fetch_soup(URL2)
+        soup = fetch_soup(URL)
         area = soup.select_one("table.Category_list_table")
         found = area.select("a")
+
         for row in found:
             theme = row.text
             url = self.__convert_link(row)
             if theme in all_themes and all_themes[theme] != url:
-                breakpoint()
+                raise ValueError(f"Something went wrong: url={url}, theme={theme}, all_themes[theme]={all_themes[theme]}")
 
             all_themes[theme] = url
 
@@ -60,12 +56,8 @@ class BlogChartHandler:
     def __ranks(self, url):
         soup = fetch_soup(url)
 
-        list_area = soup.select_one("div.all_category")
-        ranks = (
-            [row.get("href") for row in list_area.select("table tr td a")]
-            if list_area
-            else []
-        )
+        list_area = soup.select_one("div#theme_rank_slide")
+        ranks = [row.get("href") for row in list_area.select("a")] if list_area else []
 
         return ranks
 

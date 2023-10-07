@@ -41,6 +41,10 @@ class PostHandler:
         self._tags, self._images = func2(url)
 
     @property
+    def platform(self):
+        return self._platform
+
+    @property
     def blog_info(self):
         return self._blog_info
 
