@@ -17,6 +17,7 @@ with open("scripts/test/expected_posts.yaml") as file:
             "https://blog.naver.com/ssamssam48/222070461955",
             {
                 "platform": Platform.NAVER,
+                "rss_url": expected_list[0]["info"]["rss_url"],
                 "info": expected_list[0]["info"],
                 "images": expected_list[0]["images"],
                 "tags": expected_list[0]["tags"],
@@ -26,6 +27,7 @@ with open("scripts/test/expected_posts.yaml") as file:
             "https://chakeun.tistory.com/1060",
             {
                 "platform": Platform.TISTORY,
+                "rss_url": expected_list[1]["info"]["rss_url"],
                 "info": expected_list[1]["info"],
                 "images": expected_list[1]["images"],
                 "tags": expected_list[1]["tags"],
@@ -77,10 +79,11 @@ def test_post_handler(mocker, input_url, expected):
     )
 
     ph = PostHandler(input_url)
-
     assert ph.platform == expected["platform"]
-    assert ph.blog_info == expected["info"]
-    tags, images = ph.post_tags_images
+    assert ph.rss_url == expected["rss_url"]
 
+    ph.extract()
+    tags, images = ph.post_tags_images
+    assert ph.blog_info == expected["info"]
     assert tags == expected["tags"]
     assert images == expected["images"]

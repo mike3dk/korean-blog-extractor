@@ -33,16 +33,24 @@ class PostHandler:
     def __init__(self, url):
         self._url = url
         self._rss_url = self.__guess_rss_url(url)
+        self._blog_info = {}
+        self._tags = []
+        self._images = []
 
+    def extract(self):
         func1 = func_dict_blog_info[self._platform]
         self._blog_info = func1(self._rss_url)
 
         func2 = func_dict_tags_images[self._platform]
-        self._tags, self._images = func2(url)
+        self._tags, self._images = func2(self._url)
 
     @property
     def platform(self):
         return self._platform
+
+    @property
+    def rss_url(self):
+        return self._rss_url
 
     @property
     def blog_info(self):
@@ -51,10 +59,6 @@ class PostHandler:
     @property
     def post_tags_images(self):
         return self._tags, self._images
-
-    @property
-    def rss_url(self):
-        return self._rss_url
 
     def __guess_rss_url(self, url):
         parsed = urlparse(url)

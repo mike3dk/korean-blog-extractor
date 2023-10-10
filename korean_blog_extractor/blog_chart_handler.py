@@ -36,7 +36,9 @@ class BlogChartHandler:
             theme = row.text
             url = self.__convert_link(row)
             if theme in all_themes and all_themes[theme] != url:
-                raise ValueError(f"Something went wrong: url={url}, theme={theme}, all_themes[theme]={all_themes[theme]}")
+                raise ValueError(
+                    f"Something went wrong: url={url}, theme={theme}, all_themes[theme]={all_themes[theme]}"
+                )
 
             all_themes[theme] = url
 

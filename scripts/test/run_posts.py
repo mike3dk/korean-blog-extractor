@@ -12,8 +12,13 @@ def main():
         try:
             print(f">>>{idx}: {expected['url']}")
 
+            # figure out platform and guess rss_url
             ph = PostHandler(expected["url"])
+            print(ph.platform)
+            print(ph.rss_url)
 
+            # actually visit the site and extract information
+            ph.extract()
             info = ph.blog_info
             tags, images = ph.post_tags_images
             print(info)

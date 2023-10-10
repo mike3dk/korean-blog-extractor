@@ -14,8 +14,17 @@ pip install git+https://github.com/mike3dk/korean-blog-extractor
 url = 'https://blog.naver.com/songsong14/222993193146'
 
 ph = PostHandler(url)
-print(ph.blog_info)
+print(ph.platform)
+print(ph.rss_url)
 
+# will return
+Platform.NAVER
+https://rss.blog.naver.com/songsong14.xml
+
+# Actuall visit the site and extract the information
+ph.extract()
+
+print(ph.blog_info)
 # will retrun
 {
     'title': '스웨트러너 블로그',
