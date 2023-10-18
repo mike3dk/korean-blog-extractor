@@ -9,6 +9,7 @@ def main():
 
     themes = ["국내여행", "해외여행", "방송/연예"]
     bch = BlogChartHandler(themes)
+    print(bch.all_themes)
 
     for idx, expected in enumerate(expected_list):
         try:

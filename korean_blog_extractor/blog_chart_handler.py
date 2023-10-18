@@ -27,7 +27,6 @@ class BlogChartHandler:
     def __generate_themes_list(self):
         all_themes = {}
         URL = "https://www.blogchart.co.kr/chart/theme_list"
-
         soup = fetch_soup(URL)
         area = soup.select_one("table.Category_list_table")
         found = area.select("a")
@@ -58,7 +57,7 @@ class BlogChartHandler:
     def __ranks(self, url):
         soup = fetch_soup(url)
 
-        list_area = soup.select_one("div#theme_rank_slide")
+        list_area = soup.select_one("div.all_category")
         ranks = [row.get("href") for row in list_area.select("a")] if list_area else []
 
         return ranks
