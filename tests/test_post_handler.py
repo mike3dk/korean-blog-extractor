@@ -1,9 +1,9 @@
+from unittest.mock import MagicMock
+
 import pytest
 import yaml
 
-from unittest.mock import MagicMock
-
-from korean_blog_extractor.post_handler import PostHandler, Platform
+from korean_blog_extractor.post_handler import Platform, PostHandler
 from tests.util import file_loader
 
 with open("scripts/test/expected_posts.yaml") as file:
@@ -85,5 +85,5 @@ def test_post_handler(mocker, input_url, expected):
     ph.extract()
     tags, images = ph.post_tags_images
     assert ph.blog_info == expected["info"]
-    assert tags == expected["tags"]
-    assert images == expected["images"]
+    assert tags == set(expected["tags"])
+    assert images == set(expected["images"])

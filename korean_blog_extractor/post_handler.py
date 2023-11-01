@@ -3,14 +3,10 @@ from urllib.parse import urlparse
 
 import feedparser
 
-from korean_blog_extractor.platforms.naver import (
-    naver_func_blog_info,
-    naver_func_tags_images,
-)
-from korean_blog_extractor.platforms.tistory import (
-    tistory_func_blog_info,
-    tistory_func_tags_images,
-)
+from korean_blog_extractor.platforms.naver import (naver_func_blog_info,
+                                                   naver_func_tags_images)
+from korean_blog_extractor.platforms.tistory import (tistory_func_blog_info,
+                                                     tistory_func_tags_images)
 
 
 class Platform(Enum):
@@ -34,8 +30,8 @@ class PostHandler:
         self._url = url
         self._rss_url = self.__guess_rss_url(url)
         self._blog_info = {}
-        self._tags = []
-        self._images = []
+        self._tags = set()
+        self._images = set()
 
     def extract(self):
         func1 = func_dict_blog_info[self._platform]
