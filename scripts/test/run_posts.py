@@ -37,5 +37,16 @@ def main():
             traceback.print_exc()
 
 
+def main2():
+    url = "https://likewind.net/1487"
+    ph = PostHandler(url)
+    ph.extract()
+    info = ph.blog_info
+    tags, images = ph.post_tags_images
+    print(vars(ph))
+    print(tags)
+    print(images)
+
+
 if __name__ == "__main__":
-    main()
+    main2()

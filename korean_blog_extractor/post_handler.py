@@ -13,9 +13,10 @@ from korean_blog_extractor.platforms.tistory import (
 )
 
 
-class Platform(Enum):
+class Platform(str, Enum):
     NAVER = 1
     TISTORY = 2  # daum is now using Tistory
+    EGLOOS = 3  # now deprecated but
 
 
 func_dict_blog_info = {
@@ -32,10 +33,14 @@ func_dict_tags_images = {
 class PostHandler:
     def __init__(self, url):
         self._url = url
-        self._rss_url = self.__guess_rss_url(url)
         self._blog_info = {}
         self._tags = set()
         self._images = set()
+        self._rss_url = None
+        self._platform = None
+
+        self.__guess_rss_url()
+        self.__guess_platform()
 
     def extract(self):
         func1 = func_dict_blog_info[self._platform]
@@ -60,21 +65,29 @@ class PostHandler:
     def post_tags_images(self):
         return self._tags, self._images
 
-    def __guess_rss_url(self, url):
-        parsed = urlparse(url)
+    def __guess_rss_url(self):
+        parsed = urlparse(self._url)
         parts = parsed.path.split("/")
         path_parts = [part for part in parts if part]
 
         if "naver" in parsed.netloc:
             name = path_parts[0]
             self._platform = Platform.NAVER
-            return f"{parsed.scheme}://rss.{parsed.netloc}/{name}.xml"
+            self._rss_url = f"{parsed.scheme}://rss.{parsed.netloc}/{name}.xml"
+            return
 
         if "tistory" in parsed.netloc:
             self._platform = Platform.TISTORY
-            return f"{parsed.scheme}://{parsed.netloc}/rss"
+            self._rss_url = f"{parsed.scheme}://{parsed.netloc}/rss"
+            return
 
         if "blog.me" in parsed.netloc:
-            return f"http://rss.blog.naver.com/{name}.xml"
+            self._rss_url = f"http://rss.blog.naver.com/{name}.xml"
+            return
 
-        return f"http://{parsed.netloc}/rss"
+        self._rss_url = f"http://{parsed.netloc}/rss"
+
+    def __guess_platform(self):
+        if self._platform is None:
+            parsed = feedparser.parse(self.rss_url)
+            self._platform = Platform[parsed.feed.generator.upper()]
