@@ -1,6 +1,6 @@
 - url: https://blog.naver.com/ssamssam48/222070461955
   info:
-    title: "용의주도미스고의 행복만들기♪"
+    name: "용의주도미스고의 행복만들기♪"
     url: "https://blog.naver.com/ssamssam48"
     rss_url: https://rss.blog.naver.com/ssamssam48.xml
     description: "네이버 여행+ 제주에디터\n반려견과 제주살이\n올드잉글리쉬쉽독 여름치치\n여행은 내 삶의 樂"
@@ -37,7 +37,7 @@
   tags: ["EOS850D", "dslr", "dslr카메라", "캐논"]
 - url: https://chakeun.tistory.com/1060
   info:
-    title: "위기주부의 미국 여행과 생활 V2"
+    name: "위기주부의 미국 여행과 생활 V2"
     url: "https://chakeun.tistory.com/"
     rss_url: https://chakeun.tistory.com/rss
     description: "14년간의 미국서부여행과 LA생활의 이야기들, 그리고 이어지는 미국동부의 여행과 생활"

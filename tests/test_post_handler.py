@@ -39,7 +39,7 @@ def test_post_handler(mocker, input_url, expected):
     info_naver = expected_list[0]["info"]
     mock_naver = MagicMock(
         feed=MagicMock(
-            title=info_naver["title"],
+            title=info_naver["name"],
             link=info_naver["url"],
             rss_url=info_naver["rss_url"],
             description=info_naver["description"],
@@ -49,7 +49,7 @@ def test_post_handler(mocker, input_url, expected):
     info_tistory = expected_list[1]["info"]
     mock_tistory = MagicMock(
         feed=MagicMock(
-            title=info_tistory["title"],
+            title=info_tistory["name"],
             link=info_tistory["url"],
             description=info_tistory["description"],
         )

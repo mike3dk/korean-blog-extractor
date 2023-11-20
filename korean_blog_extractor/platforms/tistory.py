@@ -8,7 +8,7 @@ from korean_blog_extractor.platforms.common import fetch_soup
 def tistory_func_blog_info(rss_url):
     parsed = feedparser.parse(rss_url)
     info = {
-        "title": parsed.feed.title,
+        "name": parsed.feed.title,
         "url": parsed.feed.link,
         "rss_url": rss_url,
         "description": parsed.feed.description,

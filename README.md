@@ -27,7 +27,7 @@ ph.extract()
 print(ph.blog_info)
 # will retrun
 {
-    'title': '스웨트러너 블로그',
+    'name': '스웨트러너 블로그',
     'url': 'https://blog.naver.com/songsong14',
     'rss_url': 'https://rss.blog.naver.com/songsong14.xml',
     'description': '"애니정보 & 리뷰 블로그"',
