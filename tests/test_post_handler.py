@@ -1,7 +1,9 @@
+from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import pytest
 import yaml
+from feedparser import FeedParserDict
 
 from korean_blog_extractor.post_handler import Platform, PostHandler
 from tests.util import file_loader
@@ -37,23 +39,22 @@ with open("scripts/test/expected_posts.yaml") as file:
 )
 def test_post_handler(mocker, input_url, expected):
     info_naver = expected_list[0]["info"]
-    mock_naver = MagicMock(
-        feed=MagicMock(
-            title=info_naver["name"],
-            link=info_naver["url"],
-            rss_url=info_naver["rss_url"],
-            description=info_naver["description"],
-            image=MagicMock(href=info_naver["image"]),
-        )
-    )
+    feed_dict = {
+        "title": info_naver["name"],
+        "link": info_naver["url"],
+        "rss_url": info_naver["rss_url"],
+        "description": info_naver["description"],
+        "image": MagicMock(href=info_naver["image"]),
+    }
+    mock_naver = MagicMock(feed=FeedParserDict(feed_dict))
+
     info_tistory = expected_list[1]["info"]
-    mock_tistory = MagicMock(
-        feed=MagicMock(
-            title=info_tistory["name"],
-            link=info_tistory["url"],
-            description=info_tistory["description"],
-        )
-    )
+    feed_dict = {
+        "title": info_tistory["name"],
+        "link": info_tistory["url"],
+        "description": info_tistory["description"],
+    }
+    mock_tistory = MagicMock(feed=FeedParserDict(feed_dict))
 
     if expected["platform"] == Platform.NAVER:
         mocker.patch(

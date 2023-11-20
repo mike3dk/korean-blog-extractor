@@ -38,7 +38,9 @@ def main():
 
 
 def main2():
-    url = "https://likewind.net/1487"
+    # url = "https://blog.naver.com/odoomi/222248896354"
+    # url = "https://likewind.net/1487"
+    url = "https://blog.naver.com/ssamssam48/222070461955"
     ph = PostHandler(url)
     ph.extract()
     info = ph.blog_info

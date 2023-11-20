@@ -12,8 +12,9 @@ def naver_func_blog_info(rss_url):
         "url": parsed.feed.link,
         "rss_url": rss_url,
         "description": parsed.feed.description,
-        "image": parsed.feed.image.href,
     }
+    if "image" in parsed.feed:
+        info["image"] = parsed.feed.image.href
     return info
 
 
