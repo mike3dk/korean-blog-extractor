@@ -11,76 +11,46 @@ from korean_blog_extractor.platforms.tistory import (
     tistory_func_blog_info,
     tistory_func_tags_images,
 )
+from korean_blog_extractor.platforms.wordpress import (
+    wordpress_func_blog_info,
+    wordpress_func_tags_images,
+)
+from korean_blog_extractor.utils import url_exist
 
 
 class Platform(str, Enum):
     NAVER = 1
     TISTORY = 2  # daum is now using Tistory
     EGLOOS = 3  # now deprecated but
+    WORDPRESS = 4
 
 
 func_dict_blog_info = {
     Platform.NAVER: naver_func_blog_info,
     Platform.TISTORY: tistory_func_blog_info,
+    Platform.WORDPRESS: wordpress_func_blog_info,
 }
 
 func_dict_tags_images = {
     Platform.NAVER: naver_func_tags_images,
     Platform.TISTORY: tistory_func_tags_images,
+    Platform.WORDPRESS: wordpress_func_tags_images,
 }
 
 
 class PostHandler:
     def __init__(self, url):
-        self._url = url
-        self.valid = False
-        self.__check_valid()
+        self.url = url
+        self._rss_url = None
+        self.valid = url_exist(self.url)
         self._blog_info = {}
         self._tags = set()
         self._images = set()
-        self._rss_url = None
-        self._platform = None
 
         self.__guess_rss_url()
-        self.__guess_platform()
-
-    def extract(self):
-        if not self.valid:
-            print(f"Cannot connect to {self._url}")
-            return
-
-        func1 = func_dict_blog_info[self._platform]
-        self._blog_info = func1(self._rss_url)
-
-        func2 = func_dict_tags_images[self._platform]
-        self._tags, self._images = func2(self._url)
-
-    @property
-    def platform(self):
-        return self._platform
-
-    @property
-    def rss_url(self):
-        return self._rss_url
-
-    @property
-    def blog_info(self):
-        return self._blog_info
-
-    @property
-    def post_tags_images(self):
-        return self._tags, self._images
-
-    def __check_valid(self):
-        try:
-            resp = urllib.request.urlopen(self._url)
-        except urllib.error.URLError:
-            self.valid = False
-        else:
-            self.valid = True
 
     def __guess_rss_url(self):
-        parsed = urllib.parse.urlparse(self._url)
+        parsed = urllib.parse.urlparse(self.url)
 
         parts = parsed.path.split("/")
         path_parts = [part for part in parts if part]
@@ -101,12 +71,49 @@ class PostHandler:
             self._rss_url = f"https://rss.blog.naver.com/{name}.xml"
             return
 
-        self._rss_url = f"https://{parsed.netloc}/rss"
-
-    def __guess_platform(self):
-        if not self.valid:
+        url_wp_base = f"{parsed.scheme}://{parsed.netloc}"
+        url_wp_admin = f"{url_wp_base}/wp-admin"
+        if url_exist(url_wp_admin):
+            self._platform = Platform.WORDPRESS
+            self._rss_url = f"{url_wp_base}/feed"
             return
 
-        if self._platform is None:
-            parsed = feedparser.parse(self.rss_url)
+        # if paltform is still unknown
+        self._rss_url = f"https://{parsed.netloc}/rss"
+        parsed = feedparser.parse(self.rss_url)
+
+        if "generator" in parsed.feed:
             self._platform = Platform[parsed.feed.generator.upper()]
+            if self._platform in Platform:
+                return
+
+        self._platform = None
+
+    def extract(self):
+        if not self.valid:
+            print(f"Cannot connect to {self.url}")
+            return
+
+        self.parsed_feed = feedparser.parse(self.rss_url)
+
+        func1 = func_dict_blog_info[self._platform]
+        self._blog_info = func1(self)
+
+        func2 = func_dict_tags_images[self._platform]
+        self._tags, self._images = func2(self)
+
+    @property
+    def platform(self):
+        return self._platform
+
+    @property
+    def rss_url(self):
+        return self._rss_url
+
+    @property
+    def blog_info(self):
+        return self._blog_info
+
+    @property
+    def post_tags_images(self):
+        return self._tags, self._images

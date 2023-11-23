@@ -1,6 +1,7 @@
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
+import feedparser
 import pytest
 import yaml
 from feedparser import FeedParserDict
@@ -35,51 +36,55 @@ with open("scripts/test/expected_posts.yaml") as file:
                 "tags": expected_list[1]["tags"],
             },
         ),
+        pytest.param(
+            "https://chitsol.com/entry/meta_quest3_review/",
+            {
+                "platform": Platform.WORDPRESS,
+                "rss_url": expected_list[2]["info"]["rss_url"],
+                "info": expected_list[2]["info"],
+                "images": expected_list[2]["images"],
+                "tags": expected_list[2]["tags"],
+            },
+        ),
     ],
 )
 def test_post_handler(mocker, input_url, expected):
-    info_naver = expected_list[0]["info"]
-    feed_dict = {
-        "title": info_naver["name"],
-        "link": info_naver["url"],
-        "rss_url": info_naver["rss_url"],
-        "description": info_naver["description"],
-        "image": MagicMock(href=info_naver["image"]),
-        "generator": info_naver["generator"],
-    }
-    mock_naver = MagicMock(feed=FeedParserDict(feed_dict))
+    def mock():
+        mock_naver = feedparser.parse("tests/data/rss_naver.xml")
+        mock_tistory = feedparser.parse("tests/data/rss_tistory.xml")
+        mock_wordpress = feedparser.parse("tests/data/rss_wordpress.xml")
 
-    info_tistory = expected_list[1]["info"]
-    feed_dict = {
-        "title": info_tistory["name"],
-        "link": info_tistory["url"],
-        "description": info_tistory["description"],
-        "generator": info_tistory["generator"],
-    }
-    mock_tistory = MagicMock(feed=FeedParserDict(feed_dict))
+        if expected["platform"] == Platform.NAVER:
+            mocker.patch(
+                "korean_blog_extractor.post_handler.feedparser.parse",
+                return_value=mock_naver,
+            )
+        elif expected["platform"] == Platform.TISTORY:
+            mocker.patch(
+                "korean_blog_extractor.post_handler.feedparser.parse",
+                return_value=mock_tistory,
+            )
+        elif expected["platform"] == Platform.WORDPRESS:
+            mocker.patch(
+                "korean_blog_extractor.post_handler.feedparser.parse",
+                return_value=mock_wordpress,
+            )
 
-    if expected["platform"] == Platform.NAVER:
+        def side_effect2(url, timeout):
+            if url == "https://m.blog.naver.com/ssamssam48/222070461955":
+                return MagicMock(content=file_loader("tests/data/post_naver.html"))
+            if url == "https://chakeun.tistory.com/1060":
+                return MagicMock(content=file_loader("tests/data/post_tistory.html"))
+
+            raise ValueError("Unsupported URL")
+
         mocker.patch(
-            "korean_blog_extractor.platforms.naver.feedparser.parse",
-            return_value=mock_naver,
+            "korean_blog_extractor.platforms.common.requests.get",
+            side_effect=side_effect2,
         )
-    elif expected["platform"] == Platform.TISTORY:
-        mocker.patch(
-            "korean_blog_extractor.platforms.tistory.feedparser.parse",
-            return_value=mock_tistory,
-        )
+        mocker.patch("korean_blog_extractor.post_handler.url_exist", return_value=True)
 
-    def side_effect2(url, timeout):
-        if url == "https://m.blog.naver.com/ssamssam48/222070461955":
-            return MagicMock(content=file_loader("tests/data/post_naver.html"))
-        if url == "https://chakeun.tistory.com/1060":
-            return MagicMock(content=file_loader("tests/data/post_tistory.html"))
-
-        raise ValueError("Unsupported URL")
-
-    mocker.patch(
-        "korean_blog_extractor.platforms.common.requests.get", side_effect=side_effect2
-    )
+    mock()
 
     ph = PostHandler(input_url)
     assert ph.platform == expected["platform"]

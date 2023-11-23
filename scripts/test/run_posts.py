@@ -38,24 +38,29 @@ def main():
 
 
 def main2():
+    urls = {
     # url = "https://blog.naver.com/odoomi/222248896354"
     # url = "https://likewind.net/1487"
-    # url = "https://blog.naver.com/ssamssam48/222070461955"
-    # url = "https://chakeun.tistory.com/1060"
-    url = "https://blog.daum.net/yoji88/3124"
-    ph = PostHandler(url)
-    ph.extract()
-    info = ph.blog_info
-    tags, images = ph.post_tags_images
-    print(vars(ph))
-    print("info=")
-    print(info)
-    print("tags=")
-    for tag in tags:
-        print(tag)
-    print("images=")
-    for image in images:
-        print(image)
+    "https://blog.naver.com/ssamssam48/222070461955",
+    "https://chakeun.tistory.com/1060",
+    # url = "https://blog.daum.net/yoji88/3124"
+    "https://chitsol.com/entry/meta_quest3_review/"  # wordpress rss
+    }
+
+    for url in urls:
+        ph = PostHandler(url)
+        ph.extract()
+        info = ph.blog_info
+        tags, images = ph.post_tags_images
+        print(vars(ph))
+        print("info=")
+        print(info)
+        print("tags=")
+        for tag in tags:
+            print(tag)
+        print("images=")
+        for image in images:
+            print(image)
 
 
 if __name__ == "__main__":

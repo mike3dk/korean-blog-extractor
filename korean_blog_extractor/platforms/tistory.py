@@ -5,12 +5,12 @@ import feedparser
 from korean_blog_extractor.platforms.common import fetch_soup
 
 
-def tistory_func_blog_info(rss_url):
-    parsed = feedparser.parse(rss_url)
+def tistory_func_blog_info(ph):
+    parsed = ph.parsed_feed
     info = {
         "name": parsed.feed.title,
         "url": parsed.feed.link,
-        "rss_url": rss_url,
+        "rss_url": ph.rss_url,
         "description": parsed.feed.description,
     }
     if "generator" in parsed.feed:
@@ -26,7 +26,8 @@ def clean_tag(tag_text):
     return tag_text
 
 
-def tistory_func_tags_images(url):
+def tistory_func_tags_images(ph):
+    url = ph.url
     soup = fetch_soup(url)
 
     main = soup.select_one("div.article-view")

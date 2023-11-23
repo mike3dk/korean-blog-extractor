@@ -1,16 +1,14 @@
 from urllib.parse import urlparse
 
-import feedparser
-
 from korean_blog_extractor.platforms.common import fetch_soup
 
 
-def naver_func_blog_info(rss_url):
-    parsed = feedparser.parse(rss_url)
+def naver_func_blog_info(ph):
+    parsed = ph.parsed_feed
     info = {
         "name": parsed.feed.title,
         "url": parsed.feed.link,
-        "rss_url": rss_url,
+        "rss_url": ph.rss_url,
         "description": parsed.feed.description,
     }
     if "image" in parsed.feed:
@@ -42,7 +40,8 @@ def clean_tag(tag_text):
     return tag_text.replace("#", "")
 
 
-def naver_func_tags_images(web_url):
+def naver_func_tags_images(ph):
+    web_url = ph.url
     url = mobile_url(web_url)
 
     soup = fetch_soup(url)

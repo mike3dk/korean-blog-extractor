@@ -79,3 +79,39 @@
       "캘리포니아",
       "퍼니스크릭",
     ]
+- url: https://chitsol.com/entry/meta_quest3_review/
+  info:
+    name: "칫솔_초이의 IT 휴게실"
+    url: "https://chitsol.com"
+    rss_url: https://chitsol.com/feed
+    description: "CHiTSOL's BLOG"
+    generator: "WORDPRESS"
+    image: 'https://chitsol.com/wp-content/uploads/2019/01/cropped-chitsol_site_icon-32x32.png'
+  images:
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_16.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_08.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_02.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_09.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_07.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_06.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_04.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_12.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_11.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_05.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_15.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_03.jpg
+    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_13.jpg
+  tags: [
+    "퀘스트3",
+    "MixedReality",
+    "VirtualReality",
+    "quest3",
+    "meta",
+    "하드웨어 돋보기",
+    "가상현실",
+    "MR",
+    "MR_headset",
+    "MR헤드셋",
+    "혼합현실",
+    "메타"
+  ]
