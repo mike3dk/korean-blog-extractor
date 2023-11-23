@@ -5,6 +5,7 @@
     rss_url: https://rss.blog.naver.com/ssamssam48.xml
     description: "네이버 여행+ 제주에디터\n반려견과 제주살이\n올드잉글리쉬쉽독 여름치치\n여행은 내 삶의 樂"
     image: "https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?type=m2"
+    generator: "Naver Blog"
   images:
     - https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?
     - https://postfiles.pstatic.net/MjAyMDA4MjFfMjYz/MDAxNTk3OTk1OTEzMDA5.H9Mt1P-qTYRU1PgE_ehjsfKHyfaZKslut1VDq5MC024g.CKyZNE_LxD22U_Xlf_vSzjtvnI140vT2759MWbTTESwg.JPEG.ssamssam48/캡처.JPG?type=w966
@@ -41,6 +42,7 @@
     url: "https://chakeun.tistory.com/"
     rss_url: https://chakeun.tistory.com/rss
     description: "14년간의 미국서부여행과 LA생활의 이야기들, 그리고 이어지는 미국동부의 여행과 생활"
+    generator: "TISTORY"
   images:
     - https://blog.kakaocdn.net/dn/bBRNEQ/btqOvSfNJfW/6hTYrJRjAPKDZIvA8SHlAK/img.jpg
     - https://blog.kakaocdn.net/dn/IN1v0/btqOuIrabHD/7tJM5HVoQYOOBiXE13FCJK/img.jpg

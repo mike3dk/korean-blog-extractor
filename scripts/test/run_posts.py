@@ -41,7 +41,8 @@ def main2():
     # url = "https://blog.naver.com/odoomi/222248896354"
     # url = "https://likewind.net/1487"
     # url = "https://blog.naver.com/ssamssam48/222070461955"
-    url = "https://chakeun.tistory.com/1060"
+    # url = "https://chakeun.tistory.com/1060"
+    url = "https://blog.daum.net/yoji88/3124"
     ph = PostHandler(url)
     ph.extract()
     info = ph.blog_info

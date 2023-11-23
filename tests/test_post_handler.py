@@ -45,6 +45,7 @@ def test_post_handler(mocker, input_url, expected):
         "rss_url": info_naver["rss_url"],
         "description": info_naver["description"],
         "image": MagicMock(href=info_naver["image"]),
+        "generator": info_naver["generator"],
     }
     mock_naver = MagicMock(feed=FeedParserDict(feed_dict))
 
@@ -53,6 +54,7 @@ def test_post_handler(mocker, input_url, expected):
         "title": info_tistory["name"],
         "link": info_tistory["url"],
         "description": info_tistory["description"],
+        "generator": info_tistory["generator"],
     }
     mock_tistory = MagicMock(feed=FeedParserDict(feed_dict))
 

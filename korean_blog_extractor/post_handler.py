@@ -1,5 +1,5 @@
+import urllib
 from enum import Enum
-from urllib.parse import urlparse
 
 import feedparser
 
@@ -33,6 +33,8 @@ func_dict_tags_images = {
 class PostHandler:
     def __init__(self, url):
         self._url = url
+        self.valid = False
+        self.__check_valid()
         self._blog_info = {}
         self._tags = set()
         self._images = set()
@@ -43,6 +45,10 @@ class PostHandler:
         self.__guess_platform()
 
     def extract(self):
+        if not self.valid:
+            print(f"Cannot connect to {self._url}")
+            return
+
         func1 = func_dict_blog_info[self._platform]
         self._blog_info = func1(self._rss_url)
 
@@ -65,8 +71,17 @@ class PostHandler:
     def post_tags_images(self):
         return self._tags, self._images
 
+    def __check_valid(self):
+        try:
+            resp = urllib.request.urlopen(self._url)
+        except urllib.error.URLError:
+            self.valid = False
+        else:
+            self.valid = True
+
     def __guess_rss_url(self):
-        parsed = urlparse(self._url)
+        parsed = urllib.parse.urlparse(self._url)
+
         parts = parsed.path.split("/")
         path_parts = [part for part in parts if part]
 
@@ -89,6 +104,9 @@ class PostHandler:
         self._rss_url = f"https://{parsed.netloc}/rss"
 
     def __guess_platform(self):
+        if not self.valid:
+            return
+
         if self._platform is None:
             parsed = feedparser.parse(self.rss_url)
             self._platform = Platform[parsed.feed.generator.upper()]
