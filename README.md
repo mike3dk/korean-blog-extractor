@@ -52,16 +52,16 @@ print(bch.ranks)
 # will return
 {
     '게임': [
-        'http://blog.naver.com/sun0799dh',
-        'http://blog.naver.com/soary81',
-        'http://blog.naver.com/jjang986',
-        'http://blog.naver.com/hypoid613',
-        'http://blog.naver.com/anisaver',
-        'http://blog.naver.com/2pnn',
-        'http://blog.naver.com/whaudrlekd',
-        'http://blog.naver.com/sweetk2ss',
-        'http://blog.naver.com/meniereman',
-        'http://blog.naver.com/playmyworld'
+        'https://blog.naver.com/sun0799dh',
+        'https://blog.naver.com/soary81',
+        'https://blog.naver.com/jjang986',
+        'https://blog.naver.com/hypoid613',
+        'https://blog.naver.com/anisaver',
+        'https://blog.naver.com/2pnn',
+        'https://blog.naver.com/whaudrlekd',
+        'https://blog.naver.com/sweetk2ss',
+        'https://blog.naver.com/meniereman',
+        'https://blog.naver.com/playmyworld'
     ]
 }
 ```

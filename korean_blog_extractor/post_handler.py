@@ -82,10 +82,11 @@ class PostHandler:
             return
 
         if "blog.me" in parsed.netloc:
-            self._rss_url = f"http://rss.blog.naver.com/{name}.xml"
+            self._platform = Platform.NAVER
+            self._rss_url = f"https://rss.blog.naver.com/{name}.xml"
             return
 
-        self._rss_url = f"http://{parsed.netloc}/rss"
+        self._rss_url = f"https://{parsed.netloc}/rss"
 
     def __guess_platform(self):
         if self._platform is None:

@@ -4,6 +4,7 @@ from urllib.parse import urlparse
 import feedparser
 
 from korean_blog_extractor.platforms.common import fetch_soup
+from korean_blog_extractor.utils import replace_http
 
 
 class BlogChartHandler:
@@ -59,6 +60,9 @@ class BlogChartHandler:
 
         list_area = soup.select_one("div.all_category")
         ranks = [row.get("href") for row in list_area.select("a")] if list_area else []
+
+        # make sure all urls start with https
+        ranks = [replace_http(rank) for rank in ranks]
 
         return ranks
 

@@ -30,15 +30,15 @@ def test_blog_chart_handler(mocker):
     assert bch.all_themes.get(theme) == url2
 
     expected = [
-        "http://blog.naver.com/soary81",
-        "http://blog.naver.com/2pnn",
-        "http://blog.naver.com/anisaver",
-        "http://blog.naver.com/ddihw",
-        "http://blog.naver.com/hypoid613",
-        "http://blog.naver.com/sun0799dh",
-        "http://blog.naver.com/jjang986",
-        "http://blog.naver.com/sweetk2ss",
-        "http://blog.naver.com/cowai",
-        "http://blog.naver.com/rdal89",
+        "https://blog.naver.com/soary81",
+        "https://blog.naver.com/2pnn",
+        "https://blog.naver.com/anisaver",
+        "https://blog.naver.com/ddihw",
+        "https://blog.naver.com/hypoid613",
+        "https://blog.naver.com/sun0799dh",
+        "https://blog.naver.com/jjang986",
+        "https://blog.naver.com/sweetk2ss",
+        "https://blog.naver.com/cowai",
+        "https://blog.naver.com/rdal89",
     ]
     assert bch.ranks.get(theme) == expected

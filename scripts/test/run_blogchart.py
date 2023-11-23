@@ -9,7 +9,7 @@ def main():
     with open("scripts/test/expected_blog_chart.yaml") as file:
         expected_list = yaml.safe_load(file)
 
-    themes = ["국내여행", "해외여행", "방송/연예"]
+    themes = ("국내여행", "해외여행", "방송/연예")
     bch = BlogChartHandler(themes)
     print(bch.all_themes)
 
