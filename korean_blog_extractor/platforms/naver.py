@@ -15,6 +15,9 @@ def naver_func_blog_info(rss_url):
     }
     if "image" in parsed.feed:
         info["image"] = parsed.feed.image.href
+    if "generator" in parsed.feed:
+        info["generator"] = parsed.feed.generator
+
     return info
 
 

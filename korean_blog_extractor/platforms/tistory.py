@@ -13,6 +13,8 @@ def tistory_func_blog_info(rss_url):
         "rss_url": rss_url,
         "description": parsed.feed.description,
     }
+    if "generator" in parsed.feed:
+        info["generator"] = parsed.feed.generator
     return info
 
 
