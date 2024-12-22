@@ -130,3 +130,5 @@ dmypy.json
 
 # shell at root
 /*.sh
+
+.DS_Store
