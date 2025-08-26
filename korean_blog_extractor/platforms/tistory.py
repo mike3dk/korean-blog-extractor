@@ -1,7 +1,5 @@
 from typing import Dict, Set, Tuple, Any, Optional
-from urllib.parse import urlparse
 
-import feedparser
 
 from korean_blog_extractor.platforms.common import fetch_soup
 
@@ -25,8 +23,8 @@ def clean_image(url: Optional[str]) -> Optional[str]:
     if not url:
         return url
     # Remove query parameters that might cause issues
-    if '?' in url:
-        url = url.split('?')[0]
+    if "?" in url:
+        url = url.split("?")[0]
     return url.strip()
 
 
@@ -43,7 +41,11 @@ def tistory_func_tags_images(ph: Any) -> Tuple[Set[str], Set[str]]:
     soup = fetch_soup(url)
 
     # Try multiple content area selectors
-    main = soup.select_one("div.area_view_content") or soup.select_one("div.article_content") or soup.select_one("div.article-view")
+    main = (
+        soup.select_one("div.area_view_content")
+        or soup.select_one("div.article_content")
+        or soup.select_one("div.article-view")
+    )
     images = (
         {clean_image(img.get("src")) for img in main.select("img")} if main else set()
     )

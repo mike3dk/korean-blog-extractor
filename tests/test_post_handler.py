@@ -1,10 +1,8 @@
-from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import feedparser
 import pytest
 import yaml
-from feedparser import FeedParserDict
 
 from korean_blog_extractor.post_handler import Platform, PostHandler
 from tests.util import file_loader
@@ -75,7 +73,10 @@ def test_post_handler(mocker, input_url, expected):
                 return MagicMock(content=file_loader("tests/data/post_naver.html"))
             if url == "https://mike3dk.tistory.com/1":
                 return MagicMock(content=file_loader("tests/data/post_tistory.html"))
-            if url == "https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/":
+            if (
+                url
+                == "https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/"
+            ):
                 return MagicMock(content=file_loader("tests/data/post_wordpress.html"))
 
             raise ValueError(f"Unsupported URL: {url}")

@@ -2,7 +2,7 @@ import traceback
 
 import yaml
 
-from korean_blog_extractor import BlogChartHandler, PostHandler
+from korean_blog_extractor import PostHandler
 
 
 def main():

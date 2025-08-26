@@ -1,7 +1,5 @@
 import re
-from urllib.parse import urlparse
 
-import feedparser
 
 from korean_blog_extractor.platforms.common import fetch_soup
 from korean_blog_extractor.utils import replace_http

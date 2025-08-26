@@ -86,17 +86,17 @@ class PostHandler:
 
         if "generator" in parsed.feed:
             generator = parsed.feed.generator.upper()
-            if 'WORDPRESS' in generator:
+            if "WORDPRESS" in generator:
                 self._platform = Platform.WORDPRESS
-                # Update RSS URL to use /feed for WordPress  
+                # Update RSS URL to use /feed for WordPress
                 url_parsed = urllib.parse.urlparse(self.url)
                 url_wp_base = f"{url_parsed.scheme}://{url_parsed.netloc}"
                 self._rss_url = f"{url_wp_base}/feed"
                 return
-            elif 'TISTORY' in generator:
+            elif "TISTORY" in generator:
                 self._platform = Platform.TISTORY
                 return
-            elif 'NAVER' in generator:
+            elif "NAVER" in generator:
                 self._platform = Platform.NAVER
                 return
 

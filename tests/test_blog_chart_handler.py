@@ -1,6 +1,5 @@
 from unittest.mock import MagicMock
 
-import pytest
 
 from korean_blog_extractor.blog_chart_handler import BlogChartHandler
 from tests.util import file_loader
