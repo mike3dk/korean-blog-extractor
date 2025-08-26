@@ -1,3 +1,31 @@
+- url: https://blog.naver.com/mike3dk/223983671419
+  info:
+    name: 마사장의 블로그
+    url: https://blog.naver.com/mike3dk?fromRss=true&trackingCode=rss
+    rss_url: https://rss.blog.naver.com/mike3dk.xml
+    description: 자기소개를 입력하세요.
+    generator: Naver Blog
+  images:
+  - https://postfiles.pstatic.net/MjAyNTA4MjZfMjU3/MDAxNzU2MTcyNjU4MDI1.ppx9VJMv_rlNq0jiVoiBPt8qXiN8iyErAja3CItbL3Qg.mVXXcVQ-1aXXkFPf36HbRY40Y_JxD47bxtsqqctsCJkg.JPEG/countries-with-michelin-restaurants.jpg?type=w966
+  tags:
+  - 도쿄
+  - 레스토랑
+  - 맛집
+  - 미슐랭
+- url: https://mike3dk.tistory.com/1
+  info:
+    name: 마이클의 블로그
+    url: https://mike3dk.tistory.com/
+    rss_url: https://mike3dk.tistory.com/rss
+    description: ''
+    generator: TISTORY
+  images:
+  - https://blog.kakaocdn.net/dna/bwtcX1/btsP7dgMnER/AAAAAAAAAAAAAAAAAAAAAH2gH5dGp6zlDIkx-CTVrCXDLZ4-PaSpaGf97uG8jryh/img.webp?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1756652399&allow_ip=&allow_referer=&signature=G1W8mRRO1Jp87J%2FLY8G30woXYlM%3D
+  tags:
+  - 도쿄
+  - 레스토랑
+  - 맛집
+  - 미슐랭
 - url: https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/
   info:
     name: 마사장의 웹사이트
