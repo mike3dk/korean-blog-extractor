@@ -1,0 +1,120 @@
+name: Daily Site Validation
+
+on:
+  schedule:
+    # Runs daily at midnight PST (08:00 UTC)
+    - cron: '0 8 * * *'
+  workflow_dispatch:  # Allows manual trigger
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  validate-real-sites:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+        
+    - name: Install dependencies
+      run: poetry install
+      
+    - name: Test PostHandler against real blog sites
+      id: post-validation
+      run: |
+        echo "=== Testing PostHandler against real blog sites ==="
+        if poetry run python scripts/test/run_posts.py > post_validation_output.txt 2>&1; then
+          echo "PostHandler validation passed!"
+        else
+          echo "PostHandler validation failed!"
+          cat post_validation_output.txt
+          echo "failed=true" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+        
+    - name: Test BlogChartHandler against real blog ranking sites
+      id: chart-validation
+      if: always()
+      run: |
+        echo "=== Testing BlogChartHandler against real blog ranking sites ==="
+        if poetry run python scripts/test/run_blogchart.py > blogchart_validation_output.txt 2>&1; then
+          echo "BlogChartHandler validation passed!"
+        else
+          echo "BlogChartHandler validation failed!"
+          cat blogchart_validation_output.txt
+          echo "failed=true" >> $GITHUB_OUTPUT
+          exit 1
+        fi
+        
+    - name: Upload validation outputs on failure
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: validation-outputs
+        path: |
+          post_validation_output.txt
+          blogchart_validation_output.txt
+        retention-days: 30
+        
+  create-issue:
+    needs: validate-real-sites
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+    - name: Create issue on validation failure
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const today = new Date().toISOString().split('T')[0];
+          const timestamp = new Date().toISOString();
+          
+          // Check for existing issue today
+          const existingIssues = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            labels: 'validation-failure'
+          });
+          
+          const todayIssue = existingIssues.data.find(issue => 
+            issue.title.includes(today)
+          );
+          
+          if (!todayIssue) {
+            const body = [
+              '## Daily Site Validation Failed',
+              '',
+              `**Date:** ${timestamp}`,
+              '',
+              '### Failed Validations',
+              '- One or more validation steps failed during the daily check',
+              '- Check the workflow run for detailed error messages',
+              '- Download validation artifacts for complete logs',
+              '',
+              '### Next Steps',
+              '1. Review the failed validation logs',
+              '2. Check if target websites have changed their structure',
+              '3. Update extractors if necessary',
+              '4. Re-run the validation workflow',
+              '',
+              `**Workflow Run:** ${context.payload.repository.html_url}/actions/runs/${context.runId}`
+            ].join('\n');
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Daily Site Validation Failed - ${today}`,
+              body: body,
+              labels: ['validation-failure', 'bug']
+            });
+          }

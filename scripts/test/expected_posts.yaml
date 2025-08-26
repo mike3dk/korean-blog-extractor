@@ -1,117 +1,43 @@
-- url: https://blog.naver.com/ssamssam48/222070461955
+- url: https://blog.naver.com/mike3dk/223983671419
   info:
-    name: "용의주도미스고의 행복만들기♪"
-    url: "https://blog.naver.com/ssamssam48"
-    rss_url: https://rss.blog.naver.com/ssamssam48.xml
-    description: "네이버 여행+ 제주에디터\n반려견과 제주살이\n올드잉글리쉬쉽독 여름치치\n여행은 내 삶의 樂"
-    image: "https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?type=m2"
-    generator: "Naver Blog"
+    name: 마사장의 블로그
+    url: https://blog.naver.com/mike3dk?fromRss=true&trackingCode=rss
+    rss_url: https://rss.blog.naver.com/mike3dk.xml
+    description: 자기소개를 입력하세요.
+    generator: Naver Blog
   images:
-    - https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjYz/MDAxNTk3OTk1OTEzMDA5.H9Mt1P-qTYRU1PgE_ehjsfKHyfaZKslut1VDq5MC024g.CKyZNE_LxD22U_Xlf_vSzjtvnI140vT2759MWbTTESwg.JPEG.ssamssam48/캡처.JPG?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTg5/MDAxNTk3OTk2MDg2MjEw.nMwnJwwor9Nue24E8WF28VYcrSGNco4CABOFSQy1TRgg.Cjvj782HwIxDrveHgLnygJflxS9okvQKxeshWe-6kXEg.JPEG.ssamssam48/20200820-IMG_5196.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTIz/MDAxNTk3OTk2MjIzMzYx.08gj7lpIN6V4Vn34OQz22HcwfrJ1oNmH4WzMPtGw8fsg.Yy2-ijgcouXKIKUBxiMHc19XUBShTLVM85dONaijSsog.JPEG.ssamssam48/20200820-IMG_5212.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNTkg/MDAxNTk3OTk2MjIzMjg2.mnRXN5XXbGeUclj2SOHgCY4OliN8-BjtIZSpK_6_i8Eg.rcPQjAqEbfWRnjKiGBw1UWlVaXFx0_nlOLWP-9XJNfUg.JPEG.ssamssam48/20200820-IMG_5217.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNTEg/MDAxNTk3OTk2MzIwNjk3.QhB2YF0kihfP9ooMf6gI2jqnzT95-4ek4aXuW0OHvnAg.gU5A7frefocFDM6BgskCdoRbMBcyC_RgIKvkafJIDTgg.JPEG.ssamssam48/20200820-IMG_5247.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTU4/MDAxNTk3OTk2MzIwNDY2.t19uIdaUJz47DeJzDFWLv2U5WCH9MiewS4l9m_JLSkgg.iil4xIRMOO44j0WUQ0WPbKxdhXZ6dAzuw-qUs3_RfjQg.JPEG.ssamssam48/20200820-IMG_5249.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjY1/MDAxNTk3OTk2NTE5MjY3.4hpqhf04q3nbPI9jfgPnqHRbr61Tr8VCbylFRMswgWwg.uIIvvAfod_ULyj5RGE3b4FDZZ_M5OGo1oHbYxWvoglog.JPEG.ssamssam48/20200820-IMG_5225.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjYw/MDAxNTk3OTk2NTE5NTY0.7SIZCYkvlKrWlB8Uw7umK6nlPNOxU0soOrTZdJzAAXIg.YoOtCt6KRo54OnuqHf_aZeQZ61ym9dLITfN0GqOS00Ig.JPEG.ssamssam48/20200820-IMG_5241.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjc4/MDAxNTk3OTk2OTM3NjI5.ja3MmQ40QOolFfJBgavrK2AEgj9AE02xB13XMT5ody8g.n0VpoWkkH1eGCvv7ZRhBqTnzj4h6U7ponhw-_0w-ctog.JPEG.ssamssam48/20200820-IMG_5243.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTI2/MDAxNTk3OTk2OTM3NjYx.FrnQsrgSAyq-R5Bca7WcidVFBw3Q3inEnzNZ6f-w-Csg.rpg7I_aIBL_tMBUzwYg-t_me4OgZcj7zWGeltRv-z38g.JPEG.ssamssam48/20200820-IMG_5244.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNDkg/MDAxNTk3OTk3MTQ4NjAw.euN-3a8txRCqIngoVyqU-bV16LPIwZNZIxuOqvfg71cg.mnTZe1z94Bs2GnGyAPzrsh2Q2on9cSbjXr4NRnE3a90g.JPEG.ssamssam48/20200820-IMG_5274.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjA0/MDAxNTk3OTk3MTQ4NjUx.k-LSG5miniIJp3Tv6wrwJkYPnPkP2mQxER_bzWKxK1Qg.ryWSPennw2f4G7c5KhJr1c9qYOPehjtaoIRsWxTefLcg.JPEG.ssamssam48/20200820-IMG_5333.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNTIg/MDAxNTk3OTk3NTcyNjQ3.VKIwmdkLHbtkt9ZJfOjZJkVfBnyW8Rg-LsuX-tg65dMg.GgJk7zHzdIQmEXHiInhzuEOp5VTSv3lZdn4BspfOj0Ig.JPEG.ssamssam48/20200820-IMG_5263.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNDcg/MDAxNTk3OTk3NTcyMzIz.QqNUDqBE7Kh_GSnx9_L8uPNyrsJDSpiQGWa5rnecJYcg.dcKOFUCrqhX8dVZQ4asyVgsJFVe0-P5YxCF0b1hrpl0g.JPEG.ssamssam48/20200820-IMG_5269.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjgx/MDAxNTk3OTk3NTcyNDgz.hh1zQCMGAuoFg_yyHE-McfSKbgBKyND1hoqAIcuzS7Ig.G8UguUomZTl4kQP75WaQZyOn1xFaKFFlu_G2mY09A18g.JPEG.ssamssam48/20200820-IMG_5272.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjU5/MDAxNTk3OTk3Njg2NzA0.YQf-M3lzpZvfrOnUENRlTmzN4BWv7BF1j_k-DYzdDMMg.FVV1_DRblO_-5Je31TSkuQr5EVQkcjCnovuqyQJGwF0g.JPEG.ssamssam48/20200820-IMG_5266.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNTkg/MDAxNTk3OTk3Njg3MTI3.PPswXAzpsHX62LPTV6nmJnULBdbqOBDVny2dfAgHe0sg.M-u9Lrpzkx4K9FYSnTTE2RJebkGXXyZmAh4BCurfA4Ag.JPEG.ssamssam48/20200820-IMG_5270.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTEw/MDAxNTk3OTk3OTkyMTc1.GFJOPNMeBzlXF_Q8yfYSlJFdgvZj3E_oKczx-2sbKsEg.DfUpLC7ZlUmwuTCJ2Cuqx0UHTSfczIW7EiINCS4PtGAg.JPEG.ssamssam48/20200820-IMG_5199.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTgz/MDAxNTk3OTk3OTkyMTg3.RmB-G-walz6S3KK-S75Y9hrtKBQcIYeyDklgxDd5nLAg.3m2lmTheBKzkmod8foBhsI1GjxDzGHLvk8R1BrDF7lcg.JPEG.ssamssam48/20200820-IMG_5224.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTM2/MDAxNTk3OTk3OTQwMzg2.df9jHOXSB0Pe1YU6A-qESIatzibRmhZejKiXW1oAjcog.XgEwSmCA7fD4eHkuM5790_jytcgykvTL-OupCRjX2dQg.JPEG.ssamssam48/20200820-IMG_5198.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMjI2/MDAxNTk3OTk4MDE4NjQ0.8A9dKsgNwRiQ0bB-Rk8fXZgSzD95R0TlvJZa-RqzuLcg.D-Nz3dUtZOh6qzsF-voQRmTwPmVaxH25fcIcmOqXls8g.JPEG.ssamssam48/20200820-IMG_5291.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNTIg/MDAxNTk3OTk4MDE4NzA4._OKY13QNuEgneHnemQHtFb6bm8dcgyZUehNvSmk0KLUg.09xJmUdefMx1uGzeR74rzVH4Vg6RVwqPBPZE5j65O1Yg.JPEG.ssamssam48/20200820-IMG_5306.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNzAg/MDAxNTk3OTk4MDE4OTc3.Jm4pxeoBTyTd8NrHh6KuPRi3FbOmSVWz-Zby-seoR1wg.eJrJEDiYaRX0v6PARQi-KLk_dmHGwzN5E0GuxkzHZgEg.JPEG.ssamssam48/20200820-IMG_5309.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMzAg/MDAxNTk3OTk4MDE4NzA1.G3uR46zRSFWEsSR6jRQ4ZkZmt81yRlaYUuUoDMVN0ecg.U53Ze_kS8V2w7cDeYCBplHQTkpANe7pdUhBXNQxSpt8g.JPEG.ssamssam48/20200820-IMG_5317.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfNDQg/MDAxNTk3OTk4MDE4OTI5.8RclZp4ip9NrkBEG7qfW2SCsQhJOA77fCTaRgnsZsYMg.1ZlRKqa7G4W5VBqM54ZgwWTMo-UaNvGhHgGsGoRep68g.JPEG.ssamssam48/20200820-IMG_5320.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTQy/MDAxNTk3OTk4MDE5MjU4.9RsCIMXQ08XelxfSSl2gqgHXmJkNYavUOOdH2sv7iGkg.BZvSC88jOFKLJJxT8S8bjiB9JrsBxEqmpD8PvemjbwQg.JPEG.ssamssam48/20200820-IMG_5335.jpg?type=w966
-    - https://postfiles.pstatic.net/MjAyMDA4MjFfMTg2/MDAxNTk3OTk4MDYxMTA0.IYEn2xDAvQM-zBnz3RY1NOgoHlCXTQafUi2lQ4ZG39Ug.GMcpEckj5p98f8IGERALt-mzndZag5kpURpqkx67snMg.JPEG.ssamssam48/de.jpg?type=w966
-  tags: ["EOS850D", "dslr", "dslr카메라", "캐논"]
-- url: https://chakeun.tistory.com/1060
-  info:
-    name: "위기주부의 미국 여행과 생활 V2"
-    url: "https://chakeun.tistory.com/"
-    rss_url: https://chakeun.tistory.com/rss
-    description: "14년간의 미국서부여행과 LA생활의 이야기들, 그리고 이어지는 미국동부의 여행과 생활"
-    generator: "TISTORY"
-  images:
-    - https://blog.kakaocdn.net/dn/bBRNEQ/btqOvSfNJfW/6hTYrJRjAPKDZIvA8SHlAK/img.jpg
-    - https://blog.kakaocdn.net/dn/IN1v0/btqOuIrabHD/7tJM5HVoQYOOBiXE13FCJK/img.jpg
-    - https://blog.kakaocdn.net/dn/Wc8y4/btqOxsnDEl6/xAAk8qk0r2AMMIaHrAjCk1/img.jpg
-    - https://blog.kakaocdn.net/dn/miYVK/btqOxsnDEB4/DNcHMNtHFjd5AevIXZgJ81/img.jpg
-    - https://blog.kakaocdn.net/dn/exFJTY/btqOH91Axev/2NbLkOr9458q5z5FcuLSG1/img.jpg
-    - https://blog.kakaocdn.net/dn/lPgPp/btqOvdYOsxt/iBh4V2Z9aBs3HskuppUWx0/img.jpg
-    - https://blog.kakaocdn.net/dn/cA28th/btqOvRVyIQH/PLHyYKMKpXe60LV5cxZJKK/img.jpg
-    - https://blog.kakaocdn.net/dn/IPu0m/btqOzATdw8Y/KYEka0v9l2qQlh2ZBEvFik/img.jpg
-    - https://blog.kakaocdn.net/dn/daaZ9p/btqOxroH5RL/esjAeKRbTc1CJQDRnOQI0K/img.jpg
-    - https://blog.kakaocdn.net/dn/dmqf81/btqOxsHVM2f/SSQ9RQYXpyZlL5NMX0ntz1/img.jpg
-    - https://blog.kakaocdn.net/dn/d3LxMB/btqOFiLgiRY/SM8uk7xHVRrPE4L3C4NG0k/img.jpg
-    - https://blog.kakaocdn.net/dn/bVDKZb/btqOtEJBRuh/pEoWHFpd1rq01UUTUvi6HK/img.jpg
-    - https://blog.kakaocdn.net/dn/rtpN1/btqOFi5yKD7/8ilblV9evoS1X2sTtCglaK/img.jpg
-    - https://blog.kakaocdn.net/dn/kBLSx/btqOH9mY7Gj/dOYd0qglqSk8wY24kbmqW0/img.jpg
-    - https://blog.kakaocdn.net/dn/bguG6q/btqOvQ3mr02/GYKFk7CclKK8l1jPVYwyCK/img.jpg
-    - https://blog.kakaocdn.net/dn/bzax0l/btqOFiqXYxR/4dL6sMhCz3rrq41kBP40MK/img.jpg
-    - https://blog.kakaocdn.net/dn/k7OpI/btqOuHMF5Ae/6riECKN1czBaihmTpaBEO0/img.jpg
-    - https://blog.kakaocdn.net/dn/PwMD0/btqOxsVr2KA/BLI5VDWPEvyevOJeMoLJ20/img.jpg
-    - https://blog.kakaocdn.net/dn/A69FW/btqOuGUrdIE/4BLt9nY70OkO9OM5JlF1AK/img.jpg
-    - https://blog.kakaocdn.net/dn/TSxTC/btqOt0Mqd6q/7ofC4LcBWTKHuHRrQZ2bf1/img.jpg
-    - https://blog.kakaocdn.net/dn/bYLOvm/btqOtZzUuR8/w0cK9pHOUYu3Ck6NC50960/img.jpg
-    - https://blog.kakaocdn.net/dn/EiwzO/btqOFh6GbN0/swdYcLmKwxEdSHk1D3Blk1/img.gif
+  - https://postfiles.pstatic.net/MjAyNTA4MjZfMjU3/MDAxNzU2MTcyNjU4MDI1.ppx9VJMv_rlNq0jiVoiBPt8qXiN8iyErAja3CItbL3Qg.mVXXcVQ-1aXXkFPf36HbRY40Y_JxD47bxtsqqctsCJkg.JPEG/countries-with-michelin-restaurants.jpg?type=w966
   tags:
-    [
-      "국립공원",
-      "데블스콜프코스",
-      "데스밸리",
-      "미국여행",
-      "배드워터",
-      "소금밭",
-      "솔트플랫",
-      "추수감사절",
-      "캘리포니아",
-      "퍼니스크릭",
-    ]
-- url: https://chitsol.com/entry/meta_quest3_review/
+  - 도쿄
+  - 레스토랑
+  - 맛집
+  - 미슐랭
+- url: https://mike3dk.tistory.com/1
   info:
-    name: "칫솔_초이의 IT 휴게실"
-    url: "https://chitsol.com"
-    rss_url: https://chitsol.com/feed
-    description: "CHiTSOL's BLOG"
-    generator: "WORDPRESS"
-    image: 'https://chitsol.com/wp-content/uploads/2019/01/cropped-chitsol_site_icon-32x32.png'
+    name: 마이클의 블로그
+    url: https://mike3dk.tistory.com/
+    rss_url: https://mike3dk.tistory.com/rss
+    description: ''
+    generator: TISTORY
   images:
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_16.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_08.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_02.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_09.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_07.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_06.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_04.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_12.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_11.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_05.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_15.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_03.jpg
-    - https://chitsol.com/wp-content/uploads/2023/10/meta_quest3_13.jpg
-  tags: [
-    "퀘스트3",
-    "MixedReality",
-    "VirtualReality",
-    "quest3",
-    "meta",
-    "하드웨어 돋보기",
-    "가상현실",
-    "MR",
-    "MR_headset",
-    "MR헤드셋",
-    "혼합현실",
-    "메타"
-  ]
+  - https://blog.kakaocdn.net/dna/bwtcX1/btsP7dgMnER/AAAAAAAAAAAAAAAAAAAAAH2gH5dGp6zlDIkx-CTVrCXDLZ4-PaSpaGf97uG8jryh/img.webp?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1756652399&allow_ip=&allow_referer=&signature=G1W8mRRO1Jp87J%2FLY8G30woXYlM%3D
+  tags:
+  - 도쿄
+  - 레스토랑
+  - 맛집
+  - 미슐랭
+- url: https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/
+  info:
+    name: 마사장의 웹사이트
+    url: https://mike7dk.wordpress.com
+    rss_url: https://mike7dk.wordpress.com/rss
+    description: ''
+    image: https://s0.wp.com/i/buttonw-com.png
+    generator: http://wordpress.com/
+  images:
+  - https://mike7dk.wordpress.com/wp-content/uploads/2025/08/countries-with-michelin-restaurants.webp?w=966
+  tags:
+  - 도쿄
+  - 레스토랑
+  - 맛집
+  - 미슐랭

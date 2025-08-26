@@ -83,8 +83,15 @@ class PostHandler:
         parsed = feedparser.parse(self.rss_url)
 
         if "generator" in parsed.feed:
-            self._platform = Platform[parsed.feed.generator.upper()]
-            if self._platform in Platform:
+            generator = parsed.feed.generator.upper()
+            if 'WORDPRESS' in generator:
+                self._platform = Platform.WORDPRESS
+                return
+            elif 'TISTORY' in generator:
+                self._platform = Platform.TISTORY
+                return
+            elif 'NAVER' in generator:
+                self._platform = Platform.NAVER
                 return
 
         self._platform = None
