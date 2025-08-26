@@ -47,7 +47,7 @@ class BlogChartHandler:
     def __find_ranks(self, themes):
         ranks = {}
         for theme in themes:
-            if theme not in self._all_themes.keys():
+            if theme not in self._all_themes:
                 continue
 
             url = self._all_themes.get(theme)
