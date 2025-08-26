@@ -30,12 +30,14 @@ def tistory_func_tags_images(ph):
     url = ph.url
     soup = fetch_soup(url)
 
-    main = soup.select_one("div.article-view")
+    # Try multiple content area selectors
+    main = soup.select_one("div.area_view_content") or soup.select_one("div.article_content") or soup.select_one("div.article-view")
     images = (
         {clean_image(img.get("src")) for img in main.select("img")} if main else set()
     )
 
-    tag_area = soup.select_one("div.article-tag")
+    # Try multiple tag area selectors
+    tag_area = soup.select_one("div.tag_content") or soup.select_one("div.article-tag")
     tags = (
         {clean_tag(tag.text) for tag in tag_area.select("a[rel='tag']")}
         if tag_area
