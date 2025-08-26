@@ -1,3 +1,4 @@
+import re
 from urllib.parse import urlparse
 
 from korean_blog_extractor.platforms.common import fetch_soup
@@ -46,14 +47,29 @@ def naver_func_tags_images(ph):
 
     soup = fetch_soup(url)
 
-    main = soup.select_one("div.post_ct")
+    main = soup.select_one("div.se-main-container")
     images = (
         {clean_image(img.get("src")) for img in main.select("img")} if main else set()
     )
 
-    tag_area = soup.select_one("div.post_tag")
-    tags = (
-        {clean_tag(tag.text) for tag in tag_area.select("span")} if tag_area else set()
-    )
+    # Try to get tags from HTML first (old method)
+    tag_area = soup.select_one("div#blog_fe_post_tag")
+    tags = set()
+    
+    if tag_area:
+        li_tags = tag_area.select("li")
+        if li_tags:
+            tags = {clean_tag(tag.text) for tag in li_tags}
+    
+    # If no tags found from HTML, try JavaScript variables (new method)
+    if not tags:
+        html_content = str(soup)
+        
+        # Look for gsTagName variable
+        tag_match = re.search(r'var gsTagName = \"([^\"]*)\";', html_content)
+        if tag_match:
+            tag_string = tag_match.group(1)
+            if tag_string:
+                tags = {tag.strip() for tag in tag_string.split(',')}
 
     return tags, images

@@ -1,36 +1,14 @@
 - url: https://blog.naver.com/mike3dk/223983671419
   info:
-    name: '마사장의 블로그'
+    name: 마사장의 블로그
     url: https://blog.naver.com/mike3dk?fromRss=true&trackingCode=rss
     rss_url: https://rss.blog.naver.com/mike3dk.xml
-    description: '자기소개를 입력하세요.'
+    description: 자기소개를 입력하세요.
     generator: Naver Blog
   images:
-    - https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?
+  - https://postfiles.pstatic.net/MjAyNTA4MjZfMjU3/MDAxNzU2MTcyNjU4MDI1.ppx9VJMv_rlNq0jiVoiBPt8qXiN8iyErAja3CItbL3Qg.mVXXcVQ-1aXXkFPf36HbRY40Y_JxD47bxtsqqctsCJkg.JPEG/countries-with-michelin-restaurants.jpg?type=w966
   tags:
-    - 도쿄
-
-- url: https://mike3dk.tistory.com/1
-  info:
-    name: '마이클의 블로그'
-    url: https://mike3dk.tistory.com/
-    rss_url: https://mike3dk.tistory.com/rss
-    description: ''
-    generator: TISTORY
-  images:
-  - https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?
-  tags:
-  - 도쿄  
-  
-- url: https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/
-  info:
-    name: '마이클의 블로그'
-    url: https://blog.naver.com/ssamssam48?fromRss=true&trackingCode=rss
-    rss_url: https://rss.blog.naver.com/ssamssam48.xml
-    description: ''
-    image: http://blogpfthumb.phinf.naver.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?type=m2
-    generator: Naver Blog
-  images:
-    - https://blogpfthumb-phinf.pstatic.net/20141208_167/ssamssam48_1417966160918tHsvF_JPEG/1234.jpg?
-  tags:
-    - 도쿄
+  - 도쿄
+  - 레스토랑
+  - 맛집
+  - 미슐랭

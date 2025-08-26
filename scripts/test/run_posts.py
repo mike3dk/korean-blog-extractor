@@ -28,8 +28,8 @@ def main():
                 print(img)
 
             assert info == expected["info"]
-            assert tags == expected["tags"]
-            assert images == expected["images"]
+            assert tags == set(expected["tags"])
+            assert set(images) == set(expected["images"])
 
             print(">>> all good!!!")
         except Exception as err:
