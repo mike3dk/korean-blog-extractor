@@ -1,7 +1,5 @@
 from typing import Dict, Set, Tuple, Any, Optional
-from urllib.parse import urlparse
 
-import feedparser
 
 from korean_blog_extractor.platforms.common import fetch_soup
 

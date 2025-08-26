@@ -1,10 +1,8 @@
-from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import feedparser
 import pytest
 import yaml
-from feedparser import FeedParserDict
 
 from korean_blog_extractor.post_handler import Platform, PostHandler
 from tests.util import file_loader
