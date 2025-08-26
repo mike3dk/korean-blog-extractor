@@ -1,3 +1,4 @@
+import logging
 import urllib
 from enum import Enum
 
@@ -67,6 +68,7 @@ class PostHandler:
             return
 
         if "blog.me" in parsed.netloc:
+            name = path_parts[0]
             self._platform = Platform.NAVER
             self._rss_url = f"https://rss.blog.naver.com/{name}.xml"
             return
@@ -86,6 +88,10 @@ class PostHandler:
             generator = parsed.feed.generator.upper()
             if 'WORDPRESS' in generator:
                 self._platform = Platform.WORDPRESS
+                # Update RSS URL to use /feed for WordPress  
+                url_parsed = urllib.parse.urlparse(self.url)
+                url_wp_base = f"{url_parsed.scheme}://{url_parsed.netloc}"
+                self._rss_url = f"{url_wp_base}/feed"
                 return
             elif 'TISTORY' in generator:
                 self._platform = Platform.TISTORY
@@ -98,7 +104,7 @@ class PostHandler:
 
     def extract(self):
         if not self.valid:
-            print(f"Cannot connect to {self.url}")
+            logging.warning(f"Cannot connect to {self.url}")
             return
 
         self.parsed_feed = feedparser.parse(self.rss_url)

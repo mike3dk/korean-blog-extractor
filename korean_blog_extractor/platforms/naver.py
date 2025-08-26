@@ -55,21 +55,21 @@ def naver_func_tags_images(ph):
     # Try to get tags from HTML first (old method)
     tag_area = soup.select_one("div#blog_fe_post_tag")
     tags = set()
-    
+
     if tag_area:
         li_tags = tag_area.select("li")
         if li_tags:
             tags = {clean_tag(tag.text) for tag in li_tags}
-    
+
     # If no tags found from HTML, try JavaScript variables (new method)
     if not tags:
         html_content = str(soup)
-        
+
         # Look for gsTagName variable
-        tag_match = re.search(r'var gsTagName = \"([^\"]*)\";', html_content)
+        tag_match = re.search(r"var gsTagName = \"([^\"]*)\";", html_content)
         if tag_match:
             tag_string = tag_match.group(1)
             if tag_string:
-                tags = {tag.strip() for tag in tag_string.split(',')}
+                tags = {tag.strip() for tag in tag_string.split(",")}
 
     return tags, images

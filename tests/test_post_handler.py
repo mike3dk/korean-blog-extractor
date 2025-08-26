@@ -17,7 +17,7 @@ with open("scripts/test/expected_posts.yaml") as file:
     ["input_url", "expected"],
     [
         pytest.param(
-            "https://blog.naver.com/ssamssam48/222070461955",
+            expected_list[0]["url"],
             {
                 "platform": Platform.NAVER,
                 "rss_url": expected_list[0]["info"]["rss_url"],
@@ -27,7 +27,7 @@ with open("scripts/test/expected_posts.yaml") as file:
             },
         ),
         pytest.param(
-            "https://chakeun.tistory.com/1060",
+            expected_list[1]["url"],
             {
                 "platform": Platform.TISTORY,
                 "rss_url": expected_list[1]["info"]["rss_url"],
@@ -37,7 +37,7 @@ with open("scripts/test/expected_posts.yaml") as file:
             },
         ),
         pytest.param(
-            "https://chitsol.com/entry/meta_quest3_review/",
+            expected_list[2]["url"],
             {
                 "platform": Platform.WORDPRESS,
                 "rss_url": expected_list[2]["info"]["rss_url"],
@@ -71,12 +71,14 @@ def test_post_handler(mocker, input_url, expected):
             )
 
         def side_effect2(url, timeout):
-            if url == "https://m.blog.naver.com/ssamssam48/222070461955":
+            if url == "https://m.blog.naver.com/mike3dk/223983671419":
                 return MagicMock(content=file_loader("tests/data/post_naver.html"))
-            if url == "https://chakeun.tistory.com/1060":
+            if url == "https://mike3dk.tistory.com/1":
                 return MagicMock(content=file_loader("tests/data/post_tistory.html"))
+            if url == "https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/":
+                return MagicMock(content=file_loader("tests/data/post_wordpress.html"))
 
-            raise ValueError("Unsupported URL")
+            raise ValueError(f"Unsupported URL: {url}")
 
         mocker.patch(
             "korean_blog_extractor.platforms.common.requests.get",

@@ -1,3 +1,4 @@
+from typing import Dict, Set, Tuple, Any, Optional
 from urllib.parse import urlparse
 
 import feedparser
@@ -5,7 +6,8 @@ import feedparser
 from korean_blog_extractor.platforms.common import fetch_soup
 
 
-def tistory_func_blog_info(ph):
+def tistory_func_blog_info(ph: Any) -> Dict[str, str]:
+    """Extract blog information from Tistory feed."""
     parsed = ph.parsed_feed
     info = {
         "name": parsed.feed.title,
@@ -18,15 +20,25 @@ def tistory_func_blog_info(ph):
     return info
 
 
-def clean_image(url):
-    return url
+def clean_image(url: Optional[str]) -> Optional[str]:
+    """Clean and normalize image URL."""
+    if not url:
+        return url
+    # Remove query parameters that might cause issues
+    if '?' in url:
+        url = url.split('?')[0]
+    return url.strip()
 
 
-def clean_tag(tag_text):
-    return tag_text
+def clean_tag(tag_text: Optional[str]) -> Optional[str]:
+    """Clean and normalize tag text."""
+    if not tag_text:
+        return tag_text
+    return tag_text.strip().lower()
 
 
-def tistory_func_tags_images(ph):
+def tistory_func_tags_images(ph: Any) -> Tuple[Set[str], Set[str]]:
+    """Extract tags and images from Tistory post."""
     url = ph.url
     soup = fetch_soup(url)
 

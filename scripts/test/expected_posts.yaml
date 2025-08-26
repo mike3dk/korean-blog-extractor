@@ -14,13 +14,13 @@
   - 미슐랭
 - url: https://mike3dk.tistory.com/1
   info:
-    name: 마이클의 블로그
+    name: 마사장의 블로그
     url: https://mike3dk.tistory.com/
     rss_url: https://mike3dk.tistory.com/rss
     description: ''
     generator: TISTORY
   images:
-  - https://blog.kakaocdn.net/dna/bwtcX1/btsP7dgMnER/AAAAAAAAAAAAAAAAAAAAAH2gH5dGp6zlDIkx-CTVrCXDLZ4-PaSpaGf97uG8jryh/img.webp?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1756652399&allow_ip=&allow_referer=&signature=G1W8mRRO1Jp87J%2FLY8G30woXYlM%3D
+  - https://blog.kakaocdn.net/dna/bwtcX1/btsP7dgMnER/AAAAAAAAAAAAAAAAAAAAAH2gH5dGp6zlDIkx-CTVrCXDLZ4-PaSpaGf97uG8jryh/img.webp
   tags:
   - 도쿄
   - 레스토랑
@@ -30,7 +30,7 @@
   info:
     name: 마사장의 웹사이트
     url: https://mike7dk.wordpress.com
-    rss_url: https://mike7dk.wordpress.com/rss
+    rss_url: https://mike7dk.wordpress.com/feed
     description: ''
     image: https://s0.wp.com/i/buttonw-com.png
     generator: http://wordpress.com/
