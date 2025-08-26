@@ -6,9 +6,23 @@ on:
     - cron: '0 8 * * *'
   workflow_dispatch:  # Allows manual trigger
 
+env:
+  PYTHON_VERSION: '3.11'
+  POETRY_VERSION: 'latest'
+
 jobs:
   validate-real-sites:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        validation:
+          - name: "PostHandler"
+            script: "scripts/test/run_posts.py"
+            description: "real blog sites"
+          - name: "BlogChartHandler"
+            script: "scripts/test/run_blogchart.py"
+            description: "real blog ranking sites"
     
     steps:
     - name: Checkout repository
@@ -17,82 +31,55 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'
+        python-version: ${{ env.PYTHON_VERSION }}
         
     - name: Install Poetry
       uses: snok/install-poetry@v1
       with:
-        version: latest
+        version: ${{ env.POETRY_VERSION }}
         virtualenvs-create: true
         virtualenvs-in-project: true
         
     - name: Install dependencies
       run: poetry install
       
-    - name: Test PostHandler against real blog sites
+    - name: Test ${{ matrix.validation.name }} against ${{ matrix.validation.description }}
+      id: validation
       run: |
-        echo "=== Testing PostHandler against real blog sites ==="
-        poetry run python scripts/test/run_posts.py > post_validation_output.txt 2>&1
-        if [ $? -ne 0 ]; then
-          echo "PostHandler validation failed!"
-          cat post_validation_output.txt
-          exit 1
-        fi
-        echo "PostHandler validation passed!"
+        echo "=== Testing ${{ matrix.validation.name }} against ${{ matrix.validation.description }} ==="
+        OUTPUT_FILE="${{ matrix.validation.name }}_validation_output.txt"
         
-    - name: Test BlogChartHandler against real blog ranking sites
-      run: |
-        echo "=== Testing BlogChartHandler against real blog ranking sites ==="
-        poetry run python scripts/test/run_blogchart.py > blogchart_validation_output.txt 2>&1
-        if [ $? -ne 0 ]; then
-          echo "BlogChartHandler validation failed!"
-          cat blogchart_validation_output.txt
+        if poetry run python ${{ matrix.validation.script }} > "$OUTPUT_FILE" 2>&1; then
+          echo "${{ matrix.validation.name }} validation passed!"
+        else
+          echo "${{ matrix.validation.name }} validation failed!"
+          cat "$OUTPUT_FILE"
+          echo "output_file=$OUTPUT_FILE" >> $GITHUB_OUTPUT
           exit 1
         fi
-        echo "BlogChartHandler validation passed!"
         
     - name: Upload validation output on failure
-      if: failure()
+      if: failure() && steps.validation.outputs.output_file
       uses: actions/upload-artifact@v4
       with:
-        name: validation-output
-        path: |
-          post_validation_output.txt
-          blogchart_validation_output.txt
+        name: validation-output-${{ matrix.validation.name }}
+        path: ${{ steps.validation.outputs.output_file }}
         retention-days: 30
         
-    - name: Create issue on failure
-      if: failure()
+  create-issue:
+    needs: validate-real-sites
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+    - name: Create issue on validation failure
       uses: actions/github-script@v7
       with:
         script: |
-          const fs = require('fs');
-          let body = '## Daily Site Validation Failed\n\n';
-          body += `**Date:** ${new Date().toISOString()}\n\n`;
-          
-          // Read output files if they exist
-          try {
-            if (fs.existsSync('post_validation_output.txt')) {
-              const postOutput = fs.readFileSync('post_validation_output.txt', 'utf8');
-              body += '### PostHandler Validation Output\n\n```\n' + postOutput.slice(-2000) + '\n```\n\n';
-            }
-          } catch (e) {
-            body += '### PostHandler Validation\n\nFailed to read output file\n\n';
-          }
-          
-          try {
-            if (fs.existsSync('blogchart_validation_output.txt')) {
-              const chartOutput = fs.readFileSync('blogchart_validation_output.txt', 'utf8');
-              body += '### BlogChartHandler Validation Output\n\n```\n' + chartOutput.slice(-2000) + '\n```\n\n';
-            }
-          } catch (e) {
-            body += '### BlogChartHandler Validation\n\nFailed to read output file\n\n';
-          }
-          
-          body += 'Please check the validation artifacts for more details.';
-          
-          // Check if there's already an open issue for today
           const today = new Date().toISOString().split('T')[0];
+          const timestamp = new Date().toISOString();
+          
+          // Check for existing issue today
           const existingIssues = await github.rest.issues.listForRepo({
             owner: context.repo.owner,
             repo: context.repo.repo,
@@ -105,6 +92,25 @@ jobs:
           );
           
           if (!todayIssue) {
+            const body = [
+              '## Daily Site Validation Failed',
+              '',
+              `**Date:** ${timestamp}`,
+              '',
+              '### Failed Validations',
+              '- One or more validation steps failed during the daily check',
+              '- Check the workflow run for detailed error messages',
+              '- Download validation artifacts for complete logs',
+              '',
+              '### Next Steps',
+              '1. Review the failed validation logs',
+              '2. Check if target websites have changed their structure',
+              '3. Update extractors if necessary',
+              '4. Re-run the validation workflow',
+              '',
+              `**Workflow Run:** ${context.payload.repository.html_url}/actions/runs/${context.runId}`
+            ].join('\n');
+            
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
