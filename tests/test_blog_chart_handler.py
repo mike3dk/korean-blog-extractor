@@ -21,7 +21,7 @@ def test_blog_chart_handler(mocker):
         raise ValueError("Unsupported URL")
 
     mocker.patch(
-        "korean_blog_extractor.platforms.common.requests.get", side_effect=side_effect
+        "korean_blog_extractor.platforms.common.httpx.Client.get", side_effect=side_effect
     )
 
     theme = "게임"

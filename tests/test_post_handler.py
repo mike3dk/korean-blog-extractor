@@ -82,7 +82,7 @@ def test_post_handler(mocker, input_url, expected):
             raise ValueError(f"Unsupported URL: {url}")
 
         mocker.patch(
-            "korean_blog_extractor.platforms.common.requests.get",
+            "korean_blog_extractor.platforms.common.httpx.Client.get",
             side_effect=side_effect2,
         )
         mocker.patch("korean_blog_extractor.post_handler.url_exist", return_value=True)
