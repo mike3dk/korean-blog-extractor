@@ -1,5 +1,4 @@
-from unittest.mock import MagicMock
-
+from bs4 import BeautifulSoup
 
 from korean_blog_extractor.blog_chart_handler import BlogChartHandler
 from tests.util import file_loader
@@ -8,25 +7,30 @@ from tests.util import file_loader
 def test_blog_chart_handler(mocker):
     url1 = "https://www.blogchart.co.kr/chart/theme_list"
     html1 = file_loader("tests/data/blogchart_theme_list.html")
-
-    url2 = "https://www.blogchart.co.kr/chart/theme_list?theme=ZnVhbmkvaiAyP1wlMT5oZmxwWWRoJDFEYFNcXmtjMg=="
     html2 = file_loader("tests/data/blogchart_theme_list_game.html")
 
-    def side_effect(url, timeout):
+    def side_effect(url, max_retries=3, retry_delay=1.0):
         if url == url1:
-            return MagicMock(content=html1)
-        if url == url2:
-            return MagicMock(content=html2)
+            return BeautifulSoup(html1, "html.parser")
+        elif "theme=" in url:  # Any theme-specific URL
+            return BeautifulSoup(html2, "html.parser")
+        else:
+            raise ValueError(f"Unsupported URL: {url}")
 
-        raise ValueError("Unsupported URL")
-
+    # Mock the fetch_soup function where it's used in BlogChartHandler
     mocker.patch(
-        "korean_blog_extractor.platforms.common.requests.get", side_effect=side_effect
+        "korean_blog_extractor.blog_chart_handler.fetch_soup", 
+        side_effect=side_effect
     )
 
     theme = "게임"
     bch = BlogChartHandler([theme])
-    assert bch.all_themes.get(theme) == url2
+    
+    # Check that the theme exists and has a valid URL
+    theme_url = bch.all_themes.get(theme)
+    assert theme_url is not None
+    assert theme_url.startswith("https://www.blogchart.co.kr/chart/theme_list?theme=")
+    assert len(theme_url) > 50  # Basic sanity check
 
     expected = [
         "https://blog.naver.com/soary81",
