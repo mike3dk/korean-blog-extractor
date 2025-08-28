@@ -1,4 +1,3 @@
-from unittest.mock import MagicMock
 from bs4 import BeautifulSoup
 
 from korean_blog_extractor.blog_chart_handler import BlogChartHandler
