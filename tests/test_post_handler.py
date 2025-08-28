@@ -68,21 +68,23 @@ def test_post_handler(mocker, input_url, expected):
                 return_value=mock_wordpress,
             )
 
-        def side_effect2(url, timeout):
+        def side_effect2(url, max_retries=3, retry_delay=1.0):
+            from bs4 import BeautifulSoup
             if url == "https://m.blog.naver.com/mike3dk/223983671419":
-                return MagicMock(content=file_loader("tests/data/post_naver.html"))
-            if url == "https://mike3dk.tistory.com/1":
-                return MagicMock(content=file_loader("tests/data/post_tistory.html"))
-            if (
+                return BeautifulSoup(file_loader("tests/data/post_naver.html"), "html.parser")
+            elif url == "https://mike3dk.tistory.com/1":
+                return BeautifulSoup(file_loader("tests/data/post_tistory.html"), "html.parser")
+            elif (
                 url
                 == "https://mike7dk.wordpress.com/2025/08/25/cities-with-most-michelin-restaurants/"
             ):
-                return MagicMock(content=file_loader("tests/data/post_wordpress.html"))
+                return BeautifulSoup(file_loader("tests/data/post_wordpress.html"), "html.parser")
+            else:
+                raise ValueError(f"Unsupported URL: {url}")
 
-            raise ValueError(f"Unsupported URL: {url}")
-
+        # Mock the fetch_soup function directly
         mocker.patch(
-            "korean_blog_extractor.platforms.common.httpx.Client.get",
+            "korean_blog_extractor.platforms.common.fetch_soup",
             side_effect=side_effect2,
         )
         mocker.patch("korean_blog_extractor.post_handler.url_exist", return_value=True)
